@@ -1,0 +1,6 @@
+Dependecias:
+
+cors,
+dotenv,
+express,
+nodmoon
