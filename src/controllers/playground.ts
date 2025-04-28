@@ -1,11 +1,11 @@
-import{
+/*import{
     verificarSenhaForte,
     converterParaBinario,
     mediaArray,
     ehPar,
     validarCEP,
     contarPalavras,
-} from "./controllers/ApiController"
+} from "./controllers/__tests__/ApiController"
 
 console.log("------ Testes manuais ------\n")
 
@@ -31,4 +31,4 @@ validarCEP("12A4567")
 
 console.log("\n Contador de palavras:")
 contarPalavras("Isso é um teste simples")
-contarPalavras("  Espaços  extras  ")
+contarPalavras("  Espaços  extras  ")*/

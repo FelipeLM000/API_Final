@@ -9,6 +9,7 @@ import "./models/associations"
 dotenv.config();
 
 const server = express();
+export default server;
 
 server.use(cors());
 conectarBanco();
