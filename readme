@@ -1,6 +1,5 @@
-Dependecias:
+Para rodar o projeto
 
-cors,
-dotenv,
-express,
-nodmoon
+npm install
+
+npm run start-dev

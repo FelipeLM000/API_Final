@@ -1,31 +1,32 @@
 import { Router } from 'express';
 
-import * as ApiController from '../controllers/apiController';
-import * as AlunoController from '../controllers/AlunoController';
-import * as DisciplinaController from '../controllers/DisciplinaController'
-import * as AlunoDisciplinaController from '../controllers/AlunoDisciplinaController'
+import * as AlunoController from '../controllers/alunoController';
+import * as DisciplinaController from '../controllers/disciplinaController'
+import * as AlunoDisciplinaController from '../controllers/alunoDisciplinaController'
+import * as ApiController from '../controllers/apiController'
+
+import { login } from '../controllers/authController';
+import { Aluno } from '../models/Aluno';
+import { Professor } from '../models/Professor';
 
 const router = Router();
 
-//router.get('/ping', ApiController.ping);
-
-//router.get('/saudacao', ApiController.apiSaudacao);
+router.get("/saudacao", ApiController.apiSaudacao)
 
 router.get('/listarTodosAlunos', AlunoController.listarAlunos);
 router.post('/cadastrarAluno', AlunoController.cadastrarAluno);
-router.put('/atualizarAluno/:alunoId', AlunoController.atualizarAluno);
+router.get('/atualizarAluno/:alunoId', AlunoController.atualizarAluno);
 router.delete('/deletarAluno/:alunoId', AlunoController.deletarAluno);
+router.get('/buscarAlunoId/:alunoId', AlunoController.buscarAluno)
 
 router.get('/listarTodasDisciplinas', DisciplinaController.listarDisciplinas);
 router.post('/cadastrarDisciplina', DisciplinaController.cadastrarDisciplina);
-router.put('/atualizarDisciplina/:disciplinaId', DisciplinaController.atualizarDisciplina);
-
-
-router.get('/listarTodasDisciplinas', AlunoDisciplinaController.vincularAlunoADisciplina);
-router.post('/cadastrarDisciplina', AlunoDisciplinaController.listarDisciplinasDoAluno);
-
-router.get("/listarDisciplinasDoAluno/:alunoId", AlunoDisciplinaController.listarDisciplinasDoAluno);
+router.get('/atualizarDisciplina/:disciplinaId', DisciplinaController.atualizarDisciplina);
 router.post("/vincularAlunoADisciplina", AlunoDisciplinaController.vincularAlunoADisciplina);
+router.get("/listarDisciplinasDoAluno/:alunoId", AlunoDisciplinaController.listarDisciplinasDoAluno);
 
+router.post('/login', login);
 
 export default router;
+
+

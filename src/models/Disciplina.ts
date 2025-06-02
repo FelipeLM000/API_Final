@@ -1,28 +1,27 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../instances/mysql";
 
-export class  Disciplina extends Model {
-    public id!: number;
-    public nome!: string;
-
+export class Disciplina extends Model {
+  public id!: number;
+  public nome!: string;
 }
 
 Disciplina.init(
-    {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-      },
-      nome: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-      },
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    {
-      sequelize,
-      tableName: "disciplinas",
-      timestamps: false,
-    }
-)
+    nome: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+  },
+  {
+    sequelize,
+    tableName: "disciplinas",
+    timestamps: false,
+  }
+);

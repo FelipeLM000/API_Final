@@ -4,19 +4,20 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import apiRoutes from './routes/routes';
 import { conectarBanco } from './instances/mysql';
-import "./models/associations"
+import "./models/associations";
 
 dotenv.config();
 
 const server = express();
-export default server;
 
 server.use(cors());
-conectarBanco();
+conectarBanco(); // Testa a conexão ao iniciar o servidor
+
 server.use(express.static(path.join(__dirname, '../public')));
 
 // Definir o formato das requisições
 server.use(express.json()); // Usando JSON
+
 
 // Definir as rotas da API
 server.use(apiRoutes);
@@ -38,3 +39,5 @@ const port = process.env.PORT || 3000; // Defina uma porta padrão se não estiv
 server.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });
+
+export default server;

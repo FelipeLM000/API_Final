@@ -1,11 +1,10 @@
-import { Request, Response } from 'express';
 
-export const ping = (req: Request, res: Response) => {
-    try {
-        res.status(200).json({ pong: true });
-    } catch (error) {
-        console.error('Deu erro ai tio', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-}
+
+
+import { Request, Response } from "express";
+
+// Função para testar
+export const apiSaudacao = (req: Request, res: Response) => {
+  return res.json({ mensagem: "Olá, bem-vindo à API!" });
+};
 
