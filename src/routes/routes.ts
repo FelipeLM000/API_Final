@@ -5,9 +5,9 @@ import * as DisciplinaController from '../controllers/disciplinaController'
 import * as AlunoDisciplinaController from '../controllers/alunoDisciplinaController'
 import * as ApiController from '../controllers/apiController'
 
-import { login } from '../controllers/authController';
-import { Aluno } from '../models/Aluno';
-import { Professor } from '../models/Professor';
+import * as AuthController from '../controllers/authController';
+//import { Aluno } from '../models/Aluno';
+//import { Professor } from '../models/Professor';
 
 const router = Router();
 
@@ -25,7 +25,7 @@ router.get('/atualizarDisciplina/:disciplinaId', DisciplinaController.atualizarD
 router.post("/vincularAlunoADisciplina", AlunoDisciplinaController.vincularAlunoADisciplina);
 router.get("/listarDisciplinasDoAluno/:alunoId", AlunoDisciplinaController.listarDisciplinasDoAluno);
 
-router.post('/login', login);
+router.post('/login', AuthController.login);
 
 export default router;
 

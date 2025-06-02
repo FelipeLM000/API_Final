@@ -3,8 +3,9 @@ import path from 'path';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import apiRoutes from './routes/routes';
-import { conectarBanco } from './instances/mysql';
+import { conectarBanco, sequelize } from './instances/mysql';
 import "./models/associations";
+import rotasProtegidas from './routes/rotasProtegidas';
 
 dotenv.config();
 
@@ -18,9 +19,13 @@ server.use(express.static(path.join(__dirname, '../public')));
 // Definir o formato das requisições
 server.use(express.json()); // Usando JSON
 
+sequelize.sync().then(() => {
+  console.log('Banco de dados sincronizado.');
+});
 
 // Definir as rotas da API
 server.use(apiRoutes);
+//server.use('/auth', apiRoutes);
 
 // Endpoint para caso o usuário acesse um caminho inexistente
 server.use((req: Request, res: Response) => {
