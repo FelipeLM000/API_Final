@@ -2,6 +2,7 @@ import { Request, Response, NextFunction, } from 'express';
 import jwt from 'jsonwebtoken';
 import { Professor } from '../models/Professor';
 import { Aluno } from '../models/Aluno';
+import * as sla from '../middlewares/auth'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'senha_secreta_123'
 
@@ -16,7 +17,7 @@ declare module 'express' {
 }
 
 // Middleware principal de autenticação
-export const authMiddleware = async (
+export const autenticar = async (
   req: Request,
   res: Response,
   next: NextFunction
