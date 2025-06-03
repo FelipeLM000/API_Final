@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { authMiddleware, apenasProfessor, alunoNaoPermitido } from '../middlewares/auth';
+import { autenticar, apenasProfessor, alunoNaoPermitido } from '../middlewares/auth';
 import { Aluno } from '../models/Aluno';
 import { Professor } from '../models/Professor'
 
 const router = Router();
 
-router.use(authMiddleware);
+router.use(autenticar);
 
 router.get('/dashboard', (req, res) => {
   res.json({
@@ -26,6 +26,12 @@ router.get('/listarAlunos', alunoNaoPermitido, async (req, res) => {
     attributes: ['id', 'nome', 'matricula']
   });
   res.json(alunos);
+});
+
+router.get('rota-protegida', autenticar, apenasProfessor, (req, res) => {
+});
+
+router.get('/apenas-professores', autenticar, apenasProfessor, (req, res) => {
 });
 
 export default router;
